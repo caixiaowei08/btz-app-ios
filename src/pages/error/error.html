@@ -8,7 +8,7 @@
       <ion-list no-lines>
         <ion-item *ngFor="let s of select;let i=index">
           <ion-label tappable (click)="seg=i">{{s}}</ion-label>
-          <ion-checkbox [checked]="seg==i?true:false" (click)="seg=i"></ion-checkbox>
+          <ion-checkbox [checked]="seg==i?true:false" tappable (click)="seg=i"></ion-checkbox>
         </ion-item>
       </ion-list>
       </div>

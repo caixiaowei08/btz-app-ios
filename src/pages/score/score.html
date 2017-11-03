@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>得分</ion-title>
+  <ion-navbar style="padding-top: 20px;">
+    <ion-title style="padding-top: 14px;padding-bottom: 2px;">得分</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content no-padding>
@@ -37,12 +37,12 @@
         -->
       </tr>
     </table>
-    
+
   </div>
 </ion-content>
 <ion-footer>
     <div class="score-bt">
-        <div class="green" (click)="getAll()">全部解析</div>
-        <div class="red" (click)="getWrong()">错题解析</div>
+        <div class="green" tappable (click)="getAll()">全部解析</div>
+        <div class="red" tappable (click)="getWrong()">错题解析</div>
       </div>
 </ion-footer>

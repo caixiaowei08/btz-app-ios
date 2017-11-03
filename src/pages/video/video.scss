@@ -53,7 +53,7 @@ page-video {
         background-image:url(../assets/images/node.png);
     }
     .cbx{
-        background-position-x:0px;  
+        background-position-x:0px;
     }
     .video-content>div{
         display: flex;
@@ -91,7 +91,8 @@ page-video {
             width:30px;
             height:30px;
             background-image: url(../assets/images/dd.png);
-            background-size:auto 30px;
+            background-repeat: no-repeat;
+            background-size:auto 28px;
             div{
                 display: none;
             }

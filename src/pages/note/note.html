@@ -3,7 +3,7 @@
   <ion-navbar>
     <ion-title>笔记</ion-title>
     <ion-buttons right *ngIf="this.type==7">
-      <button ion-button (click)="addNote()">
+      <button ion-button tappable (click)="addNote()">
         <ion-label>添加笔记</ion-label>
       </button>
     </ion-buttons>
@@ -16,9 +16,9 @@
     <div class="note-info">
       <div class="note-img"></div>
       <div class="note-namedate"><span>{{n.userId}}</span>{{n.createTime}}</div>
-      <div class="note-zan" (click)="setZan(i,n.id)">{{n.thumbsUp}}<img src="assets/images/zan.png"/></div>
+      <div class="note-zan" tappable (click)="setZan(i,n.id)">{{n.thumbsUp}}<img src="assets/images/zan.png"/></div>
     </div>
-    <div class="note-text" (click)="goExam(n.exerciseId)">
+    <div class="note-text" tappable  (click)="goExam(n.exerciseId)">
       {{n.notes}}
     </div>
   </div>

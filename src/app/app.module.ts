@@ -112,7 +112,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HttpStorage,
     FileTransfer,
     FileTransferObject,
-    File
+    File,
   ]
 })
 export class AppModule {}

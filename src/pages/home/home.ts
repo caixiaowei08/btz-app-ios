@@ -73,7 +73,6 @@ export class HomePage {
     this.segj=j;
     this.choose();
     this.subject=this.getSubject(i,j);
-    console.log(this.subject)
     this.httpstorage.setStorage("subject",this.subject);
     this.getSubsItemAll();
     this.getScore();
@@ -90,7 +89,6 @@ export class HomePage {
       if(data!=null){ //有网
         if(data.returnCode){//有数据
           this.subs=data.content;
-          console.log(data.content);
           this.httpstorage.setStorage("subs",this.subs);
           this.subject=this.getSubject(0,0);
           this.httpstorage.setStorage("subject",this.subject);

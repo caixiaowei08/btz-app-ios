@@ -17,6 +17,7 @@ export class ExamPage {
   title:any;
   exams:any;
   all:any;
+  saveQuestionRecord:any;
   mode:any;
   time:any;
   timeM:any;
@@ -34,6 +35,7 @@ export class ExamPage {
     this.title= this.navParams.get('title');
     this.exams= this.navParams.get('exams');
     this.mode= this.navParams.get('mode');
+    this.saveQuestionRecord= this.navParams.get('saveQuestionRecord');
     this.time=this.navParams.get("time");
     //题目排序
     //this.callback=this.navParams.get("callback");
@@ -150,6 +152,7 @@ export class ExamPage {
     }
     this.exam.set=res;
     if(this.exam.done>0) this.check();
+    this.saveQuestionRecord();
   }
   //单选题
   getType1(i:number){
@@ -165,6 +168,7 @@ export class ExamPage {
   setType1(i:number){
     this.exam.set=String.fromCharCode(i+65);
     if(this.exam.done>0) this.check();
+    this.saveQuestionRecord();
   }
   //多选题
   getType2(i:number){
@@ -199,6 +203,7 @@ export class ExamPage {
     tmp=this.bubble_sort(tmp);
     this.exam.set=tmp;
     if(this.exam.done>0) this.check();
+    this.saveQuestionRecord();
   }
   //判断题
   getType3(i:number){
@@ -217,13 +222,14 @@ export class ExamPage {
     //this.exam.set=(i==0)?'正确':'错误';
     this.exam.set=this.getContent1()[i];
     if(this.exam.done>0) this.check();
+    this.saveQuestionRecord();
   }
   //分录题1
   getType4(n:number){
     if(this.exam.set=="") return "";
     else return this.exam.set.split("<br/><br/>")[n];
   }
-  setType4(event:any,n:number){   
+  setType4(event:any,n:number){
     var tmp="";
     var a=this.getContentLength;
     for(var i=0;i<a-1;i++){
@@ -243,6 +249,7 @@ export class ExamPage {
     }
     //当其是已做且可判断的时候，进行自动判断
     if(this.exam.done>0&&this.exam.typeShow!=5&&this.exam.typeShow!=8) this.check();
+    this.saveQuestionRecord();
   }
   //分录题2
 
@@ -290,6 +297,7 @@ export class ExamPage {
       }
       //console.log(this.exam.set);
       if(this.exam.done>0) this.check();
+      this.saveQuestionRecord();
     }
   }
 
@@ -316,7 +324,9 @@ export class ExamPage {
       }
       //console.log(this.exam.set);
       if(this.exam.done>0) this.check();
+      this.saveQuestionRecord();
     }
+
   }
   handc(){
     let prompt = this.alertCtrl.create({

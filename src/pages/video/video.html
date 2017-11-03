@@ -2,8 +2,9 @@
   <ion-navbar>
     <ion-title>{{title}}</ion-title>
   </ion-navbar>
-  <!--muted -->
-  <video id="video" [src]="url" (timeupdate)="getJd($event)" preload="metadata" (canplay)="canPlay($event)" webkit-playsinline="true" playsinline="true" controls="controls" controlsList="nodownload"></video>
+  <video id="video" [src]="url" class="video-js vjs-big-play-centered" (timeupdate)="getJd($event)" preload="auto" (canplay)="canPlay($event)"
+         controls="controls" controlsList="nodownload">
+  </video>
   <ion-segment [(ngModel)]="seg">
     <ion-segment-button value="s1" class="segment-button-midd">
     视频

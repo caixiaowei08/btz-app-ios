@@ -11,6 +11,7 @@ export class ListsPage {
   title:any;
   exams:any;
   beg:any;
+  saveQuestionRecord:any;
   all:any;
   exam:any;
   remembermode:any;
@@ -24,6 +25,7 @@ export class ListsPage {
     this.title= this.navParams.get('title');
     this.exams= this.navParams.get('exams');
     this.beg= this.navParams.get('beg');
+    this.saveQuestionRecord= this.navParams.get('saveQuestionRecord');
     this.all= this.navParams.get('all');
     this.exam=new Array();
     this.remembermode=false;
@@ -69,7 +71,7 @@ export class ListsPage {
       if(f1&&f2&&cot<this.sum) this.exam[cot++]=this.exams[i];
     }
     //this.navCtrl.push(ExamPage,{subject:this.subject,title:this.title,exams:this.exam,beg:0,all:cot}).then(()=>{this.dismiss()});
-    this.navCtrl.push(ExamPage,{subject:this.subject,title:this.title,exams:this.exam,mode:this.remembermode,time:0}).then(()=>{this.dismiss()});
+    this.navCtrl.push(ExamPage,{subject:this.subject,saveQuestionRecord:this.saveQuestionRecord,title:this.title,exams:this.exam,mode:this.remembermode,time:0}).then(()=>{this.dismiss()});
     /*
     this.httpstorage.getStorage("s"+this.subject.id+"s",(data)=>{
       if(data!=null){

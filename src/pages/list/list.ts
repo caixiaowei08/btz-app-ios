@@ -22,7 +22,7 @@ export class ListPage {
     this.test=null;
     this.type=this.navParams.get('type')+1;
     this.loader = this.loadingCtrl.create({
-      content: "更新中...",
+      content: "请耐心等待10秒钟哦...",
       showBackdrop:false
     });
     this.loader.present();
@@ -85,7 +85,7 @@ export class ListPage {
     }
     //this.setSubsItem(null,type);
     //if(time!=0&&time<currentTime) this.setSubsItem(0,type);
-    //else 
+    //else
     if(id!=0){
       //核对版本号
       this.httpstorage.getStorage("s"+id+"i"+type+"v",(data)=>{
@@ -193,7 +193,7 @@ export class ListPage {
   choose(beg:number,all:number,tit:string,tryOut:any){
     if(tryOut||(this.subject.exam&&this.subject.time>=new Date().getTime())){
       if(this.type==1||this.type==2){
-        let modal = this.modalCtrl.create(ListsPage,{subject:this.subject,title:tit,exams:this.test.exam,beg:beg,all:all});
+        let modal = this.modalCtrl.create(ListsPage,{subject:this.subject,saveQuestionRecord:this.saveQuestionRecord.bind(this),title:tit,exams:this.test.exam,beg:beg,all:all});
         modal.present();
       }
       else{
@@ -250,6 +250,7 @@ export class ListPage {
               v.done=0;
               v.set="";
             }
+            this.saveQuestionRecord();
           }
         },
         {
@@ -264,4 +265,14 @@ export class ListPage {
   ionViewWillUnload(){
     if(this.type==1||this.type==2) this.httpstorage.setStorage("s"+this.subject.id+"i"+this.type,this.test);
   }
+
+  saveQuestionRecord(){
+    var this_= this;
+    setTimeout(function () {
+      if(this_.type==1||this_.type==2) {
+        this_.httpstorage.setStorage("s"+this_.subject.id+"i"+this_.type,this_.test);
+      }
+    }, 500);
+  }
+
 }

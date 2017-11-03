@@ -6,12 +6,15 @@ import {HttpStorage} from '../../providers/httpstorage';
 import {Platform} from 'ionic-angular';
 import * as $ from "jquery";
 import {DomSanitizer} from '@angular/platform-browser';
-import {isUndefined} from "ionic-angular/util/util";
+import * as vj from 'video.js/dist/video.js'
 
 @Component({
   selector: 'page-video',
   templateUrl: 'video.html'
 })
+
+
+
 export class VideoPage {
   seg: any;
   subject: any;
@@ -30,7 +33,14 @@ export class VideoPage {
   ct: any;
   ctf: any;
 
-  constructor(private sanitizer: DomSanitizer, public platform: Platform, public navCtrl: NavController, public navParams: NavParams, private httpstorage: HttpStorage, public alertCtrl: AlertController, private transfer: FileTransfer, private file: File) {
+  constructor(private sanitizer: DomSanitizer,
+              public platform: Platform,
+              public navCtrl: NavController,
+              public navParams: NavParams,
+              private httpstorage: HttpStorage,
+              public alertCtrl: AlertController,
+              private transfer: FileTransfer,
+              private file: File) {
     this.playbackRate = 1;
     this.seg = "s1";
     this.subject = this.navParams.get('subject');
@@ -40,17 +50,18 @@ export class VideoPage {
     this.vd = this.navParams.get("vd");
     this.si = 0;
     this.sj = 0;
-    //this.video=this.videos[0].list[0];
     this.title = "返回";
     this.urll = "";
     this.first = true;
     this.ct = -1;
     this.ctf = true;
-    //this.url=this.video!==undefined?this.video.videoUrl:null;
     this.fileTransfer.onProgress((event) => {
       $(".video-jdt").children("div").css("width", event.loaded * 100 / event.total + "%").html("<p>" + (event.loaded * 100 / event.total).toFixed(0) + "%</p>");
     });
   }
+
+
+
 
   isOk(video) {
     //课程的权限
@@ -60,6 +71,8 @@ export class VideoPage {
       return false;
     }
   }
+
+
 
   contains(av, v) {
     for (var i = 0; i < av.length; i++) {
